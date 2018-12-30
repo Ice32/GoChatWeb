@@ -8,7 +8,8 @@ import 'package:go_chat/API/EventTypes.dart';
   selector: 'channels-list',
   templateUrl: 'channels_list.html',
   providers: [ClassProvider(ApiSocket)],
-  directives: [NgFor]
+  directives: [NgFor],
+  styleUrls: const ['./channels_list.component.css'],
 )
 class ChannelsList implements OnInit {
   ApiSocket _apiSocket;
