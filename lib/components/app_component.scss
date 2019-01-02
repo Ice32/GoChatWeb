@@ -1,18 +1,19 @@
 .main-container {
   display: flex;
+  height: 100%;
 
   .channels-container {
     display: inline-block;
     width: 15%;
     min-width: 200px;
     border: 1px solid black;
-    height: 100vh;
+    height: 100%;
   }
   .messages-container {
     display: inline-block;
     border: 1px solid black;
     margin-left: -1px;
     width: 85%;
-    height: 100vh;
+    height: 100%;
   }
 }

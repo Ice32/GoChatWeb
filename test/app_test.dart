@@ -1,7 +1,7 @@
 @TestOn('browser')
 
-import 'package:go_chat/app_component.dart';
-import 'package:go_chat/app_component.template.dart' as ng;
+import 'package:go_chat/components/app_component.dart';
+import 'package:go_chat/components/app_component.template.dart' as ng;
 import 'package:angular_test/angular_test.dart';
 import 'package:test/test.dart';
 
