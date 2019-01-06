@@ -19,14 +19,14 @@ class ApiSocket {
     webSocket.onMessage.listen(this._onMessage);
     webSocket.onOpen.listen((event) => this.connected = true);
   }
-  send(ApiEvent message) async {
+  void send(ApiEvent message) async {
     while (!this.connected) {
       await CommonHelpers.pause(Duration(milliseconds: 10));
     }
-    webSocket.send(message);
+    webSocket.send(json.encode(message));
   }
 
-  subscribe(String eventType, Function listener) {
+  void subscribe(String eventType, Function listener) {
     if (subscribers[eventType] == null) {
       subscribers[eventType] = List<Function>();
     }

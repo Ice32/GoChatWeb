@@ -1,7 +1,7 @@
 <form>
     <material-input
-            [(ngModel)]="channelName"
-            (inputKeyPress)="onKeyPress"
+            [(ngModel)]="message"
+            (keyup.enter)="onReturnKeyPress($event.target.value)"
             label="Message"
             class="message-input-field"
             type="text"

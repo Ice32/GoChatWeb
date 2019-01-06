@@ -1,29 +1,25 @@
 import 'package:angular/angular.dart';
-import 'package:go_chat/API/ApiSocket.dart';
-import 'package:go_chat/API/ChannelAddEvent.dart';
-import 'package:go_chat/API/ChannelSubscribeMessage.dart';
-import 'package:go_chat/API/EventTypes.dart';
+import 'package:go_chat/services/ChatService.dart';
 
 @Component(
   selector: 'channels-list',
   templateUrl: 'channels_list.html',
-  providers: [ClassProvider(ApiSocket)],
+  providers: [ClassProvider(ChatService)],
   directives: [NgFor],
   styleUrls: const ['./channels_list.component.css'],
 )
 class ChannelsList implements OnInit {
-  ApiSocket _apiSocket;
+  ChatService _chatService;
   List<String> channels = List<String>();
 
-  ChannelsList(this._apiSocket);
+  ChannelsList(this._chatService);
 
   @override
   void ngOnInit() async {
-    _apiSocket.subscribe(EventTypes.ChannelAdd, this.onChannelAdd);
-    _apiSocket.send(ChannelSubscribeMessage());
+    _chatService.listenForChannels(onChannelAdd);
   }
 
-  void onChannelAdd(ChannelAddEvent event) {
-    this.channels.addAll(event.data);
+  void onChannelAdd(List<String> newChannels) {
+    this.channels.addAll(newChannels);
   }
 }
