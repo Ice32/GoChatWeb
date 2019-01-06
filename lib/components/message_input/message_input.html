@@ -1,1 +1,12 @@
-<input type="text" />
+<form>
+    <material-input
+            [(ngModel)]="channelName"
+            (inputKeyPress)="onKeyPress"
+            label="Message"
+            class="message-input-field"
+            type="text"
+            multiline
+            rows="2"
+    >
+    </material-input>
+</form>

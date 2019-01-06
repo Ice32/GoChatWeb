@@ -1,8 +1,9 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   height: 100%;
 }
 .messages-list-container {
-  height: 90%;
+  flex-grow: 0.999;
 }
