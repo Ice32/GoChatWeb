@@ -1,1 +1,3 @@
-<p class="channel-in-list" *ngFor="let channel of channels">{{channel}}</p>
+<a class="channel-in-list" *ngFor="let channel of channels" href="#" (click)="$event.preventDefault();onChannelSelected(channel.id)">
+    {{channel.name}}
+</a>

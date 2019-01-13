@@ -4,6 +4,7 @@ import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:go_chat/API/ApiEvent.dart';
+import 'package:go_chat/API/types/Channel.dart';
 import 'package:go_chat/API/ChannelAddEvent.dart';
 import 'package:go_chat/API/EventTypes.dart';
 import 'package:go_chat/API/MessageAddEvent.dart';
@@ -37,7 +38,11 @@ class ApiSocket {
   void _onMessage(MessageEvent message) {
     Map parsedJson = json.decode(message.data);
     if (parsedJson["Type"]== EventTypes.ChannelAdd) {
-      List<String> channels = List.from(parsedJson["Data"]);
+      List<Channel> channels = List<Channel>();
+      List<Map<String, dynamic>> channelMaps = List.from(parsedJson["Data"]);
+      channelMaps.forEach((channelMap) {
+        channels.add(Channel(channelMap["Id"], channelMap["Name"]));
+      });
       ChannelAddEvent apiEvent = ChannelAddEvent(channels);
       notifySubscribers(apiEvent);
     } else if (parsedJson["Type"]== EventTypes.MessageAdd) {

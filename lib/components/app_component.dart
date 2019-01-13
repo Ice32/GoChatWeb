@@ -11,4 +11,9 @@ import 'package:go_chat/components/messages_list/messages_list.dart';
   styleUrls: ['./app_component.css'],
   providers: const <dynamic>[materialProviders],
 )
-class AppComponent {}
+class AppComponent {
+  String selectedChannel;
+  void channelSelected(String channelId) {
+    selectedChannel = channelId;
+  }
+}
