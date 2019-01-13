@@ -8,12 +8,13 @@ import 'package:go_chat/services/ChatService.dart';
   selector: 'channels-list',
   templateUrl: 'channels_list.html',
   providers: [ClassProvider(ChatService)],
-  directives: [NgFor],
+  directives: [NgFor, NgClass],
   styleUrls: const ['./channels_list.component.css'],
 )
 class ChannelsList implements OnInit {
   ChatService _chatService;
   List<Channel> channels = List<Channel>();
+  String selectedChannel = null;
 
   ChannelsList(this._chatService);
   final _onChannelSelectController = StreamController<String>.broadcast();
@@ -30,6 +31,7 @@ class ChannelsList implements OnInit {
   }
 
   void onChannelSelected(String channelId) {
+    selectedChannel = channelId;
     _onChannelSelectController.add(channelId);
   }
 }
