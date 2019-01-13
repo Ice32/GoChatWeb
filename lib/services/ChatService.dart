@@ -20,10 +20,10 @@ class ChatService {
     });
     _apiSocket.send(ChannelSubscribeMessage());
   }
-  void listenForMessages(Function fn) {
+  void listenForMessages(String channelId, Function fn) {
     _apiSocket.subscribe(EventTypes.MessageAdd, (MessageAddEvent message) {
       fn(message.data);
     });
-    _apiSocket.send(MessageSubscribeMessage());
+    _apiSocket.send(MessageSubscribeMessage(channelId));
   }
 }

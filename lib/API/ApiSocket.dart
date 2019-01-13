@@ -8,6 +8,7 @@ import 'package:go_chat/API/types/Channel.dart';
 import 'package:go_chat/API/ChannelAddEvent.dart';
 import 'package:go_chat/API/EventTypes.dart';
 import 'package:go_chat/API/MessageAddEvent.dart';
+import 'package:go_chat/API/types/ChatMessage.dart';
 import 'package:go_chat/lib/CommonHelpers.dart';
 
 @Injectable()
@@ -46,7 +47,11 @@ class ApiSocket {
       ChannelAddEvent apiEvent = ChannelAddEvent(channels);
       notifySubscribers(apiEvent);
     } else if (parsedJson["Type"]== EventTypes.MessageAdd) {
-      List<String> messages = List.from(parsedJson["Data"]);
+      List<ChatMessage> messages = List<ChatMessage>();
+      List<Map<String, dynamic>> messageMaps = List.from(parsedJson["Data"]);
+      messageMaps.forEach((messageMap) {
+        messages.add(ChatMessage(messageMap["Id"], messageMap["Text"]));
+      });
       MessageAddEvent apiEvent = MessageAddEvent(messages);
       notifySubscribers(apiEvent);
     }
