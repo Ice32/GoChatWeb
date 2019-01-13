@@ -6,6 +6,7 @@ import 'package:angular/angular.dart';
 import 'package:go_chat/API/ApiEvent.dart';
 import 'package:go_chat/API/ChannelAddEvent.dart';
 import 'package:go_chat/API/EventTypes.dart';
+import 'package:go_chat/API/MessageAddEvent.dart';
 import 'package:go_chat/lib/CommonHelpers.dart';
 
 @Injectable()
@@ -38,6 +39,10 @@ class ApiSocket {
     if (parsedJson["Type"]== EventTypes.ChannelAdd) {
       List<String> channels = List.from(parsedJson["Data"]);
       ChannelAddEvent apiEvent = ChannelAddEvent(channels);
+      notifySubscribers(apiEvent);
+    } else if (parsedJson["Type"]== EventTypes.MessageAdd) {
+      List<String> messages = List.from(parsedJson["Data"]);
+      MessageAddEvent apiEvent = MessageAddEvent(messages);
       notifySubscribers(apiEvent);
     }
 

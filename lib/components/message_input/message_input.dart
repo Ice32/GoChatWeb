@@ -21,7 +21,7 @@ class MessageInput {
   MessageInput(this._chatService);
 
   void onSubmit() {
-    _chatService.addMessage(message);
+    _chatService.addMessage(message.substring(0, message.length - 1));
   }
   void onReturnKeyPress(String e) {
     if (e.length > 1) {
