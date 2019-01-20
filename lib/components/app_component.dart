@@ -3,17 +3,31 @@ import 'package:angular_components/angular_components.dart';
 import 'package:go_chat/components/messages_container/messages_container.dart';
 import 'package:go_chat/components/channels_list/channels_list.dart';
 import 'package:go_chat/components/messages_list/messages_list.dart';
+import 'package:go_chat/services/ChatService.dart';
 
 @Component(
   selector: 'my-app',
   templateUrl: './app_component.html',
   directives: [ChannelsList, MessagesContainer, MessagesList],
   styleUrls: ['./app_component.css'],
-  providers: const <dynamic>[materialProviders],
+  providers: const <dynamic>[materialProviders, ClassProvider(ChatService)],
 )
-class AppComponent {
+class AppComponent implements OnInit {
+  ChatService _chatService;
   String selectedChannel;
+
+  AppComponent(this._chatService);
+
   void channelSelected(String channelId) {
     selectedChannel = channelId;
+  }
+
+  @override
+  void ngOnInit() async {
+    _chatService.listenForErrors(_onError);
+  }
+
+  void _onError(String error) {
+    print(error);
   }
 }
