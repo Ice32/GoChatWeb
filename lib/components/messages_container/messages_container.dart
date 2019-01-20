@@ -6,7 +6,7 @@ import 'package:go_chat/components/messages_list/messages_list.dart';
   selector: 'messages-container',
   templateUrl: 'messages_container.html',
   styleUrls: const ['./messages_container.css'],
-  directives: [MessagesList, MessageInput],
+  directives: [MessagesList, MessageInput, NgIf],
 )
 class MessagesContainer{
   @Input("selectedChannel")

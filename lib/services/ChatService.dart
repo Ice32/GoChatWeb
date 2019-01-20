@@ -6,13 +6,14 @@ import 'package:go_chat/API/MessageAddEvent.dart';
 import 'package:go_chat/API/MessageAddMessage.dart';
 import 'package:go_chat/API/MessageSubscribeMessage.dart';
 import 'package:go_chat/API/MessageUnsubscribeMessage.dart';
+import 'package:go_chat/API/types/NewChatMessage.dart';
 
 class ChatService {
   ApiSocket _apiSocket;
 
   ChatService(this._apiSocket);
 
-  void addMessage(String message) {
+  void addMessage(NewChatMessage message) {
     _apiSocket.send(MessageAddMessage(message));
   }
   void listenForChannels(Function fn) {
@@ -28,6 +29,7 @@ class ChatService {
     _apiSocket.send(MessageSubscribeMessage(channelId));
   }
   void stopListeningForMessages(String channelId) {
+    _apiSocket.unsubscribe(EventTypes.MessageAdd);
     _apiSocket.send(MessageUnsubscribeMessage(channelId));
   }
   void listenForErrors(Function fn) {

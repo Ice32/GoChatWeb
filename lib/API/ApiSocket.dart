@@ -36,6 +36,10 @@ class ApiSocket {
     subscribers[eventType].add(listener);
   }
 
+  void unsubscribe(String eventType) {
+    subscribers[eventType] = List<Function>();
+  }
+
   void _onMessage(MessageEvent message) {
     Map parsedJson = json.decode(message.data);
     if (parsedJson["Type"]== EventTypes.ChannelAdd) {

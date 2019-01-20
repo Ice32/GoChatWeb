@@ -18,9 +18,6 @@ class MessagesList implements OnChanges {
   String selectedChannel = null;
   
   void onChannelOpen(String channelId) {
-    if (selectedChannel != null) {
-      _unsubscribeFromChannel(selectedChannel);
-    }
     _chatService.listenForMessages(channelId, onMessagesAdd);
   }
 
@@ -36,6 +33,9 @@ class MessagesList implements OnChanges {
   void ngOnChanges(Map<String, SimpleChange> changes) {
     SimpleChange selectedChannel = changes["selectedChannel"];
     if (selectedChannel.previousValue != selectedChannel.currentValue) {
+      if (selectedChannel.previousValue != null) {
+        _unsubscribeFromChannel(selectedChannel.previousValue);
+      }
       onChannelOpen(selectedChannel.currentValue);
     }
   }

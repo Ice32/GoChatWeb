@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_components/material_input/material_input.dart';
+import 'package:go_chat/API/types/NewChatMessage.dart';
 import 'package:go_chat/services/ChatService.dart';
 
 @Component(
@@ -20,8 +21,15 @@ class MessageInput {
 
   MessageInput(this._chatService);
 
+  @Input("selectedChannel")
+  String channelId = null;
+
   void onSubmit() {
-    _chatService.addMessage(message.substring(0, message.length - 1));
+    NewChatMessage newMessage = NewChatMessage(
+      message.substring(0, message.length - 1),
+      channelId,
+    );
+    _chatService.addMessage(newMessage);
   }
   void onReturnKeyPress(String e) {
     if (e.length > 1) {
