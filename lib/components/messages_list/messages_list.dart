@@ -1,11 +1,12 @@
 import 'package:angular/angular.dart';
 import 'package:go_chat/API/types/ChatMessage.dart';
+import 'package:go_chat/components/message_in_list/message_in_list.dart';
 import 'package:go_chat/services/ChatService.dart';
 
 @Component(
   selector: 'messages-list',
   templateUrl: 'messages_list.html',
-  directives: [NgFor],
+  directives: [NgFor, MessageInList],
   providers: [ClassProvider(ChatService)],
 )
 class MessagesList implements OnChanges {

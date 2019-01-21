@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  position: relative;
+  margin-top: 8px;
+
+  .message-text-container {
+    text-align: right;
+    padding-right: 5px;
+  }
+  p {
+    margin: 0;
+
+    &.message-author {
+      font-weight: bold;
+    }
+  }
+}

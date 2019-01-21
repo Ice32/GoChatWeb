@@ -1,5 +1,6 @@
 class ChatMessage {
   String id;
   String text;
-  ChatMessage(this.id, this.text);
+  String author;
+  ChatMessage(this.id, this.text, this.author);
 }

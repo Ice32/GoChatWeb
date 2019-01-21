@@ -54,7 +54,7 @@ class ApiSocket {
       List<ChatMessage> messages = List<ChatMessage>();
       List<Map<String, dynamic>> messageMaps = List.from(parsedJson["Data"]);
       messageMaps.forEach((messageMap) {
-        messages.add(ChatMessage(messageMap["Id"], messageMap["Text"]));
+        messages.add(ChatMessage(messageMap["Id"], messageMap["Text"], messageMap["Author"]));
       });
       MessageAddEvent apiEvent = MessageAddEvent(messages);
       notifySubscribers(apiEvent);
