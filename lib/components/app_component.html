@@ -1,8 +1,15 @@
 <div class="main-container">
     <div class="channels-container">
-        <channels-list (onChannelSelect)="channelSelected"></channels-list>
+        <div class="channels-list-container">
+            <channels-list (onChannelSelect)="channelSelected"></channels-list>
+        </div>
+        <username-input (onUsernameChange)="usernameChanged"></username-input>
     </div>
     <div class="messages-container">
-        <messages-container [selectedChannel]="selectedChannel"></messages-container>
+        <messages-container
+                [selectedChannel]="selectedChannel"
+                [username]="username"
+        >
+        </messages-container>
     </div>
 </div>

@@ -24,10 +24,14 @@ class MessageInput {
   @Input("selectedChannel")
   String channelId = null;
 
+  @Input("username")
+  String username;
+
   void onSubmit() {
     NewChatMessage newMessage = NewChatMessage(
       message.substring(0, message.length - 1),
       channelId,
+      username,
     );
     _chatService.addMessage(newMessage);
   }

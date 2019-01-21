@@ -2,5 +2,5 @@
     <messages-list [selectedChannel]="selectedChannel"></messages-list>
 </div>
 <div class="message-input-container" *ngIf="selectedChannel != null">
-    <message-input [selectedChannel]="selectedChannel"></message-input>
+    <message-input [selectedChannel]="selectedChannel" [username]="username"></message-input>
 </div>

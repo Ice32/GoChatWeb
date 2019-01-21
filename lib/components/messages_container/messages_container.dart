@@ -11,4 +11,7 @@ import 'package:go_chat/components/messages_list/messages_list.dart';
 class MessagesContainer{
   @Input("selectedChannel")
   String selectedChannel;
+
+  @Input("username")
+  String username;
 }
