@@ -1,0 +1,10 @@
+<form>
+    <material-input
+            [(ngModel)]="channelName"
+            label="Add channel..."
+            class="channel-input-field"
+            (keyup.enter)="onReturnKeyPress($event.target.value)"
+            type="text"
+    >
+    </material-input>
+</form>

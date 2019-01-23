@@ -1,5 +1,6 @@
 import 'package:go_chat/API/ApiSocket.dart';
 import 'package:go_chat/API/ChannelAddEvent.dart';
+import 'package:go_chat/API/ChannelAddMessage.dart';
 import 'package:go_chat/API/ChannelSubscribeMessage.dart';
 import 'package:go_chat/API/EventTypes.dart';
 import 'package:go_chat/API/MessageAddEvent.dart';
@@ -36,5 +37,8 @@ class ChatService {
     _apiSocket.subscribe(EventTypes.Error, (MessageAddEvent message) {
       fn(message.data);
     });
+  }
+  void addChannel(String channelName) {
+    _apiSocket.send(ChannelAddMessage(channelName));
   }
 }

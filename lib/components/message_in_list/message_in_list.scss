@@ -1,17 +1,24 @@
 :host {
   display: block;
   position: relative;
-  margin-top: 8px;
+  margin-top: 6px;
 
   .message-text-container {
-    text-align: right;
-    padding-right: 3%;
+    display: inline-block;
+
+    background: lightblue;
+    margin-left: 2%;
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
   }
   p {
     margin: 0;
 
     &.message-author {
       font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: 15px;
     }
   }
 }

@@ -11,6 +11,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+
+    .channel-input-container {
+      margin-top: 10px;
+    }
   }
   .channels-list-container {
     flex-grow: 0.999;

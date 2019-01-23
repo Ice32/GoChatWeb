@@ -1,5 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
+import 'package:go_chat/components/channel_input/channel_input.dart';
 import 'package:go_chat/components/messages_container/messages_container.dart';
 import 'package:go_chat/components/channels_list/channels_list.dart';
 import 'package:go_chat/components/messages_list/messages_list.dart';
@@ -9,7 +10,7 @@ import 'package:go_chat/services/ChatService.dart';
 @Component(
   selector: 'my-app',
   templateUrl: './app_component.html',
-  directives: [ChannelsList, MessagesContainer, MessagesList, UsernameInput],
+  directives: [ChannelsList, MessagesContainer, MessagesList, UsernameInput, ChannelInput],
   styleUrls: ['./app_component.css'],
   providers: const <dynamic>[materialProviders, ClassProvider(ChatService)],
 )

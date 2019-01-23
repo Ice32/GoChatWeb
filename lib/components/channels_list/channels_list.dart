@@ -27,6 +27,9 @@ class ChannelsList implements OnInit {
   }
 
   void onChannelAdd(List<Channel> newChannels) {
+    if (selectedChannel == null) {
+      this.onChannelSelected(newChannels[0].id);
+    }
     this.channels.addAll(newChannels);
   }
 
